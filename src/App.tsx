@@ -117,9 +117,7 @@ function buildAiPromptForProject(
 
   const others = allProjects.filter((p) => p.id !== active.id);
   const othersBlock =
-    others.length > 0
-      ? others.map((p) => `- ${p.name}`).join("\n")
-      : "(none)";
+    others.length > 0 ? others.map((p) => `- ${p.name}`).join("\n") : "(none)";
 
   const taskBlock =
     tasksForProject.length > 0
@@ -161,10 +159,7 @@ export default function App() {
 
   const activeProjectId = useMemo(() => {
     if (projects.length === 0) return null;
-    if (
-      selectedProjectId &&
-      projects.some((p) => p.id === selectedProjectId)
-    ) {
+    if (selectedProjectId && projects.some((p) => p.id === selectedProjectId)) {
       return selectedProjectId;
     }
     return projects[0].id;
@@ -486,7 +481,10 @@ export default function App() {
               void handleGenerateWithGemini();
             }}
             disabled={
-              aiLoading || !resolvedGeminiKey || !activeProject || !activeProjectId
+              aiLoading ||
+              !resolvedGeminiKey ||
+              !activeProject ||
+              !activeProjectId
             }
           >
             {aiLoading ? (
